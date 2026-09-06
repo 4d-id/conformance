@@ -6,7 +6,7 @@ const report = await run({ base });
 const v = verdict(report);
 let fail = 0; const t=(n,c)=>{console.log(`  ${c?"ok  ":"FAIL"} ${n}`); if(!c) fail++;};
 t("executed some tests", report.results.length >= 6);
-t("core tests pass against the reference resolver", v.p1_core === "conforms");
+t("implemented core checks pass against the reference resolver", v.p1_core === "all implemented core checks pass");
 t("no executed test failed", report.failed.length === 0);
 t("reports coverage honestly (has not-run)", report.notRun.length > 0);
 console.log("\nverdict:", v);

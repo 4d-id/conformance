@@ -1,7 +1,7 @@
 {
   "name": "@4d-id/conformance",
   "version": "0.3.0",
-  "description": "Run the 4D-ID conformance suite against any resolver endpoint. The badge that means 4D-ID compliant.",
+  "description": "Partial conformance diagnostics for the 4D-ID candidate draft, with explicit executed/not-run coverage.",
   "type": "module",
   "bin": { "4did-conformance": "src/cli.mjs" },
   "files": ["src", "schemas", "manifest.json", "README.md", "LICENSE"],

@@ -21,7 +21,7 @@ for (const t of report.results) {
 }
 console.log(`\n  ${C.dim}not run (need a fuller harness or a writable endpoint): ${report.notRun.length} tests${C.r}`);
 console.log(`\n  passed ${report.passed.length}  failed ${report.failed.length}  skipped ${report.skipped.length}`);
-console.log(`\n  P1 Core: ${v.p1_core}`);
+console.log(`\n  P1 Core checks: ${v.p1_core}`);
 console.log(`  Overall: ${v.overall}`);
 console.log(`  Coverage: ${v.coverage}\n`);
 process.exit(report.failed.length ? 1 : 0);

@@ -123,7 +123,7 @@ export function verdict(report) {
   const corePass = coreIds.every(id => report.passed.some(p => p.id === id));
   const anyFail = report.failed.length > 0;
   return {
-    p1_core: corePass ? "conforms" : "does not conform",
+    p1_core: corePass ? "all implemented core checks pass" : "one or more implemented core checks fail",
     overall: anyFail ? "some executed tests failed" : "all executed tests passed",
     coverage: `${report.passed.length + report.failed.length + report.skipped.length} of ${report.notRun.length + report.passed.length + report.failed.length + report.skipped.length} manifest tests executed`
   };

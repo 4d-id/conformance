@@ -1,6 +1,6 @@
 # @4d-id/conformance
 
-Run the 4D-ID conformance suite against any resolver endpoint. This is the badge that means **4D-ID compliant**: a second implementation points this at its server and gets an independent, spec-defined verdict.
+Run the 4D-ID conformance checks against any resolver endpoint. This is a diagnostic tool, not a certification or adoption badge: the current status is exactly **15 schema-level checks passing**, while functional work continues.
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
@@ -24,14 +24,14 @@ It exercises a running resolver's [access operations](https://github.com/4d-id/s
   PASS /conf/scale/snapshot         snapshot carries an id and zone generations
   PASS /conf/scale/list-then-watch  watch returns a change list
 
-  P1 Core: conforms
+  P1 Core checks: all implemented core checks pass
   Overall: all executed tests passed
   Coverage: 9 of 107 manifest tests executed
 ```
 
 ## Honest coverage
 
-The suite reports exactly which of the specification's tests it executed and which it did not. Many of the 107 tests are functional checks that need a writable endpoint or a fuller harness (partition behaviour, merge and split, propagation under load); this tool runs the read-side and data-level tests that any resolver can be checked against, and lists the rest as **not run** rather than pretending coverage it does not have. Coverage grows as the tool does; the manifest is the full target.
+The endpoint CLI currently executes 9 of 107 manifest tests against a running resolver and reports the rest as not run. Separately, the reference implementation's data runner has **15 schema-level checks passing**. Functional conformance work continues across writable lifecycle operations, partition behaviour, propagation, and security. Neither result is a certification or a claim of full specification conformance.
 
 ## Options
 
@@ -52,4 +52,4 @@ Exit code is non-zero if any executed test failed, so it drops into a pipeline.
 
 ## License
 
-Apache-2.0. The test manifest is defined by the [4D-ID specification](https://github.com/4d-id/spec/blob/main/conformance/manifest.json).
+Apache-2.0. The test manifest is defined by the candidate [4D-ID specification](https://github.com/4d-id/spec/blob/main/conformance/manifest.json).
