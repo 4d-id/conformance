@@ -1,0 +1,13 @@
+{
+  "name": "@4d-id/conformance",
+  "version": "0.3.0",
+  "description": "Run the 4D-ID conformance suite against any resolver endpoint. The badge that means 4D-ID compliant.",
+  "type": "module",
+  "bin": { "4did-conformance": "src/cli.mjs" },
+  "files": ["src", "schemas", "manifest.json", "README.md", "LICENSE"],
+  "scripts": { "test": "node test/test.mjs" },
+  "keywords": ["4d-id","conformance","spatial","identity","standard"],
+  "license": "Apache-2.0",
+  "repository": { "type":"git", "url":"https://github.com/4d-id/conformance" },
+  "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1" }
+}

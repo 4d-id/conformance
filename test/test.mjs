@@ -1,0 +1,14 @@
+import { run, verdict } from "../src/conformance.mjs";
+import { createServer } from "../../../pkg/4d-id/resolver/server.mjs";
+const { app } = await createServer({ seed: true });
+const srv = app.listen(0); const port = srv.address().port; const base = `http://localhost:${port}`;
+const report = await run({ base });
+const v = verdict(report);
+let fail = 0; const t=(n,c)=>{console.log(`  ${c?"ok  ":"FAIL"} ${n}`); if(!c) fail++;};
+t("executed some tests", report.results.length >= 6);
+t("core tests pass against the reference resolver", v.p1_core === "conforms");
+t("no executed test failed", report.failed.length === 0);
+t("reports coverage honestly (has not-run)", report.notRun.length > 0);
+console.log("\nverdict:", v);
+srv.close();
+console.log(`\n${fail?"FAIL":"PASS"}: ${fail} problem(s).`); process.exit(fail?1:0);
