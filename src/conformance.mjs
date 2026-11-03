@@ -17,7 +17,7 @@ const FOURDID = /^4did:[A-Za-z0-9]{1,8}:(?:[A-Za-z0-9_-]{22,86}\.)?[A-Za-z0-9.-]
 function ajv() {
   const a = new Ajv2020({ allErrors: true, strict: false });
   (addFormats.default || addFormats)(a);
-  for (const n of ["common", "state", "observation", "snapshot", "domain", "envelope"]) a.addSchema(load(`schemas/${n}.json`));
+  for (const n of ["common", "state", "observation", "snapshot", "domain", "envelope", "reconciliation"]) a.addSchema(load(`schemas/${n}.json`));
   return a;
 }
 
@@ -26,10 +26,10 @@ function ajv() {
 export async function run({ base, sampleExternalId = "asset.register:TB-WH-01", verbose = false } = {}) {
   const a = ajv();
   const V = {
-    state: a.getSchema("https://4did.org/schemas/2.3/state.json"),
-    domain: a.getSchema("https://4did.org/schemas/2.3/domain.json"),
-    envelope: a.getSchema("https://4did.org/schemas/2.3/envelope.json"),
-    observation: a.getSchema("https://4did.org/schemas/2.3/observation.json")
+    state: a.getSchema("https://4did.org/schemas/2.4/state.json"),
+    domain: a.getSchema("https://4did.org/schemas/2.4/domain.json"),
+    envelope: a.getSchema("https://4did.org/schemas/2.4/envelope.json"),
+    observation: a.getSchema("https://4did.org/schemas/2.4/observation.json")
   };
   const results = [];
   const rec = (id, status, detail) => results.push({ id, status, detail });
